@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-blur blur-one"></div>
+    <div class="background-blur blur-two"></div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Daily wellness planner</p>
+          <h1>Personal Task Manager</h1>
+        </div>
+        <div class="date-pill" id="todayDate">Today</div>
+      </header>
+
+      <main class="dashboard">
+        <section class="overview card">
+          <div class="score-panel">
+            <div class="ring-wrap">
+              <div class="score-ring" id="scoreRing">
+                <div class="ring-inner">
+                  <span class="score-value" id="healthScore">0%</span>
+                  <small>Health</small>
+                </div>
+              </div>
+            </div>
+            <div class="overview-copy">
+              <p class="label">Today's performance</p>
+              <h2 id="healthTitle">Ready to optimize</h2>
+              <p id="healthMessage">Log your daily routine to see your wellness score.</p>
+            </div>
+          </div>
+
+          <div class="avatar-panel">
+            <div class="health-avatar state-medium" id="healthAvatar" aria-label="Health character">
+              <div class="avatar-glow"></div>
+              <div class="character">
+                <div class="head">
+                  <span class="eye left"></span>
+                  <span class="eye right"></span>
+                  <span class="mouth"></span>
+                </div>
+                <div class="body"></div>
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+                <div class="leg left"></div>
+                <div class="leg right"></div>
+              </div>
+              <span class="sparkle sparkle-one"></span>
+              <span class="sparkle sparkle-two"></span>
+              <span class="sparkle sparkle-three"></span>
+            </div>
+          </div>
+
+          <div class="mini-stats">
+            <div class="mini-card">
+              <span>Wake up</span>
+              <strong id="wakeUpSummary">--:--</strong>
+            </div>
+            <div class="mini-card">
+              <span>Walk</span>
+              <strong id="walkSummary">0 min</strong>
+            </div>
+            <div class="mini-card">
+              <span>Work</span>
+              <strong id="workSummary">0 hrs</strong>
+            </div>
+            <div class="mini-card">
+              <span>Sleep</span>
+              <strong id="sleepSummary">0 hrs</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="tracker card">
+          <div class="section-head">
+            <h3>Daily activity tracker</h3>
+            <button type="button" class="ghost-btn" id="resetBtn">Reset</button>
+          </div>
+
+          <form id="activityForm">
+            <div class="form-grid">
+              <div class="field-group full-span">
+                <label>Meals completed</label>
+                <div class="checkbox-row">
+                  <label class="check-item"><input type="checkbox" name="mealBreakfast" /> Breakfast</label>
+                  <label class="check-item"><input type="checkbox" name="mealLunch" /> Lunch</label>
+                  <label class="check-item"><input type="checkbox" name="mealDinner" /> Dinner</label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="wakeUpTime">Wake up time</label>
+                <input type="time" id="wakeUpTime" name="wakeUpTime" value="07:00" />
+              </div>
+
+              <div class="field-group">
+                <label for="morningWalk">Morning walk (min)</label>
+                <input type="number" id="morningWalk" name="morningWalk" min="0" max="180" value="30" />
+              </div>
+
+              <div class="field-group">
+                <label for="workHours">Working hours</label>
+                <input type="number" id="workHours" name="workHours" min="0" max="16" step="0.5" value="8" />
+              </div>
+
+              <div class="field-group">
+                <label for="physicalActivity">Physical activity</label>
+                <select id="physicalActivity" name="physicalActivity">
+                  <option value="none">None</option>
+                  <option value="gym" selected>Gym</option>
+                  <option value="sports">Sports</option>
+                  <option value="walking">Walking</option>
+                  <option value="yoga">Yoga</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="activityMinutes">Activity minutes</label>
+                <input type="number" id="activityMinutes" name="activityMinutes" min="0" max="180" value="45" />
+              </div>
+
+              <div class="field-group">
+                <label for="waterIntake">Water intake (liters)</label>
+                <input type="number" id="waterIntake" name="waterIntake" min="0" max="6" step="0.1" value="2.5" />
+              </div>
+
+              <div class="field-group">
+                <label for="sleepHours">Sleeping hours</label>
+                <input type="number" id="sleepHours" name="sleepHours" min="0" max="14" step="0.5" value="8" />
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button type="submit" class="primary-btn">Save today</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="score-breakdown card">
+          <div class="section-head small-gap">
+            <h3>Wellness breakdown</h3>
+          </div>
+          <ul class="breakdown-list" id="breakdownList"></ul>
+        </section>
+
+        <section class="history card">
+          <div class="section-head">
+            <h3>Recent activity log</h3>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
